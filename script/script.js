@@ -83,4 +83,24 @@ navToggle.addEventListener('click', function(e) {
 /* Toggle Counter menu */
 ////////////////////////
 
+// Set variables for key elements
+var counterToggle = getId('counters');
+var counterMenu = getClass('counterMenu');
 
+// loop for both lists either side of the menu
+// adding .collapsed to the counterMenu
+counterMenu.classList.add('invisible');
+
+getClass('invisible').style.transition = 'ease-out all 0.3s';
+
+// Establish a function to toggle the class "collapse"
+function counterMenuToggle() {
+    counterMenu.classList.toggle('invisible');
+    counterMenu.classList.toggle('visible');
+}
+
+// Add a click event to run the counterMenuToggle function
+counterToggle.addEventListener('click', function(e) {
+  e.preventDefault();
+  counterMenuToggle();
+});

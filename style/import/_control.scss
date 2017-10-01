@@ -1,0 +1,19 @@
+/*
+ * INDIVIDUAL FONT STYLES
+ */
+.boldness {font-weight: bold;}
+.centerness {text-align: center;}
+/**/
+
+/*
+ * Invisible/ visible toggle classes
+ */
+.invisible {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 100%;
+  transition: ease-in all 0.4s;
+}
+/***/

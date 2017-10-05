@@ -10,8 +10,18 @@ let p1 = {
   plus: getId("p1plus"),
   minus5: getId("p1minus5"),
   plus5: getId("p1plus5"),
-  poison: 0,
-  energy: 0
+  poison: {
+    score: 0,
+    scoreElement: getId("p1poisonscore"),
+    minus: getId("p1poisonminus"),
+    plus: getId("p1poisonplus")
+  },
+  energy: {
+    score: 0,
+    scoreElement: getId("p1energyscore"),
+    minus: getId("p1energyminus"),
+    plus: getId("p1energyplus")
+  }
 }
 let p2 = {
   score: 20,
@@ -20,8 +30,18 @@ let p2 = {
   plus: getId("p2plus"),
   minus5: getId("p2minus5"),
   plus5: getId("p2plus5"),
-  poison: 0,
-  energy: 0
+  poison: {
+    score: 0,
+    scoreElement: getId("p2poisonscore"),
+    minus: getId("p2poisonminus"),
+    plus: getId("p2poisonplus")
+  },
+  energy: {
+    score: 0,
+    scoreElement: getId("p2energyscore"),
+    minus: getId("p2energyminus"),
+    plus: getId("p2energyplus")
+  }
 }
 
 // define score in html
@@ -29,7 +49,7 @@ p1.scoreElement.textContent = p1.score;
 p2.scoreElement.textContent = p2.score;
 
   //////////////
- //  -1  +1  //
+ /*  -1  +1  */
 //////////////
 
 // functions to add or remove score
@@ -61,7 +81,7 @@ p2.plus.onclick = function(e) {
 };
 
   //////////////
- //  -5  +5  //
+ /*  -5  +5  */
 //////////////
 
 // functions to add or remove score
@@ -93,9 +113,10 @@ p2.plus5.onclick = function(e) {
 };
 /* END SCORE BUTTONS */
 
-////////////////////////////////////
-/*///////// Toggle Menu /////////*/
-//////////////////////////////////
+  /////////////////
+ /* Toggle Menu */
+/////////////////
+
 // Set variables for key elements
 let navToggle = getId('button');
 let mainNav = getClass('menu');
@@ -125,9 +146,18 @@ navToggle.addEventListener('click', function(e) {
 });
 /* END MENU TOGGLE */
 
-///////////////////
-/* Reset button */
-/////////////////
+  ////////////////////
+ /* Counter toggle */
+////////////////////
+
+//p1.poison.scoreElement.textContent = p1.poison.score;
+p1.energy.scoreElement.textContent = p1.energy.score;
+p2.poison.scoreElement.textContent = p2.poison.score;
+p2.energy.scoreElement.textContent = p2.energy.score;
+
+  //////////////////
+ /* Reset button */
+//////////////////
 
 let reset = getId('reset');
 

@@ -2,24 +2,37 @@ const getId=function(x){return document.getElementById(x);}
 const getClass=function(x){return document.getElementsByClassName(x);}
 const getSelector=function(x){return document.querySelector(x);}
 
-//player scores and buttons
+//player scores, buttons and counters
 let p1 = {
   score: 20,
   scoreElement: getId("p1Score"),
   minus: getId("p1minus"),
-  plus: getId("p1plus")
+  plus: getId("p1plus"),
+  minus5: getId("p1minus5"),
+  plus5: getId("p1plus5"),
+  poison: 0,
+  energy: 0
 }
 let p2 = {
   score: 20,
   scoreElement: getId("p2Score"),
   minus: getId("p2minus"),
-  plus: getId("p2plus")
+  plus: getId("p2plus"),
+  minus5: getId("p2minus5"),
+  plus5: getId("p2plus5"),
+  poison: 0,
+  energy: 0
 }
 
 // define score in html
 p1.scoreElement.textContent = p1.score;
 p2.scoreElement.textContent = p2.score;
 
+  //////////////
+ //  -1  +1  //
+//////////////
+
+// functions to add or remove score
 function minusScore(player) {
   player.score--;
   player.scoreElement.textContent = player.score;
@@ -29,7 +42,7 @@ function plusScore(player) {
   player.scoreElement.textContent = player.score;
 }
 
-// functions to add or remove score
+// listeners to change score
 p1.minus.onclick = function(e) {
   e.preventDefault();
   minusScore(p1);
@@ -47,12 +60,45 @@ p2.plus.onclick = function(e) {
   plusScore(p2);
 };
 
+  //////////////
+ //  -5  +5  //
+//////////////
+
+// functions to add or remove score
+function minus5Score(player) {
+  player.score -= 5;
+  player.scoreElement.textContent = player.score;
+}
+function plus5Score(player) {
+  player.score += 5;
+  player.scoreElement.textContent = player.score;
+}
+
+// listeners to change score
+p1.minus5.onclick = function(e) {
+  e.preventDefault();
+  minus5Score(p1);
+};
+p1.plus5.onclick = function(e) {
+  e.preventDefault();
+  plus5Score(p1);
+};
+p2.minus5.onclick = function(e) {
+  e.preventDefault();
+  minus5Score(p2);
+};
+p2.plus5.onclick = function(e) {
+  e.preventDefault();
+  plus5Score(p2);
+};
+/* END SCORE BUTTONS */
+
 ////////////////////////////////////
 /*///////// Toggle Menu /////////*/
 //////////////////////////////////
 // Set variables for key elements
-var navToggle = getId('button');
-var mainNav = getClass('menu');
+let navToggle = getId('button');
+let mainNav = getClass('menu');
 
 // loop for both lists either side of the menu
 // adding .collapsed to the mainNav(s)
@@ -79,28 +125,17 @@ navToggle.addEventListener('click', function(e) {
 });
 /* END MENU TOGGLE */
 
-//////////////////////////
-/* Toggle Counter menu */
-////////////////////////
+///////////////////
+/* Reset button */
+/////////////////
 
-// Set variables for key elements
-var counterToggle = getId('counters');
-var counterMenu = getClass('counterMenu');
+let reset = getId('reset');
 
-// loop for both lists either side of the menu
-// adding .collapsed to the counterMenu
-counterMenu.classList.add('invisible');
-
-getClass('invisible').style.transition = 'ease-out all 0.3s';
-
-// Establish a function to toggle the class "collapse"
-function counterMenuToggle() {
-    counterMenu.classList.toggle('invisible');
-    counterMenu.classList.toggle('visible');
-}
-
-// Add a click event to run the counterMenuToggle function
-counterToggle.addEventListener('click', function(e) {
+reset.addEventListener('click', function(e) {
   e.preventDefault();
-  counterMenuToggle();
+  p1.score = 20;
+  p2.score = 20;
+  p1.scoreElement.textContent = p1.score;
+  p2.scoreElement.textContent = p2.score;
 });
+/* END RESET BUTTON */

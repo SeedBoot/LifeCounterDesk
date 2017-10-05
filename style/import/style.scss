@@ -42,21 +42,22 @@ button {
     display: block;
     transition: ease-out all 0.3s;
   }
-}
 
-#button:hover {
-  background: black;
-  border-radius: 25%;
+  &:hover {
+    background: black;
+    border-radius: 25%;
+  
+    .line {
+      background: white;
+    }
+  }
 
-  .line {
-    background: white;
+  &:active{
+    border-radius: 50%;
+    //padding: 1em 10em;
   }
 }
 
-#button:active{
-  border-radius: 50%;
-  //padding: 1em 10em;
-}
 /*////////////////////
 // END MENU BUTTON //
 //////////////////*/
@@ -71,10 +72,37 @@ li {
 // list for options
 .menu {
 
-
   li {
-    padding: 0.3em;
+    padding: 0.2em;
     margin: 0.2em;
+  }
+}
+
+#poison {
+  transition: ease-out all 0.3s;
+
+  &:hover {
+    background: black;
+    color: green;
+  }
+
+  &:active {
+    background: white;
+    color: green;
+  }
+}
+
+#energy {
+  transition: ease-out all 0.3s;
+
+  &:hover {
+    background: black;
+    color: yellow;
+  }
+
+  &:active {
+    background: white;
+    color: yellow;
   }
 }
 

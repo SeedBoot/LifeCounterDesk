@@ -12,7 +12,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="style/export/style.css" type="text/css">
     <!--FONTS-->
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=#" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
     <!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -28,15 +28,15 @@
     </div>
     <!-- START P1 COUNTERS -->
     <div class="mGitem-3">
-      <div class="poisontally playerGrid">
-        <button id="p1poisonminus item-3">-</button>
-        <p id="p1poisonscore item-4"></p>
-        <button id="p1poisonplus item-5">+</button>
+      <div class="poisontally counter-grid">
+        <button id="p1poisonminus" class="counter-item-2">-</button>
+        <p id="p1poisonscore" class="counter-item-3"></p>
+        <button id="p1poisonpluscounter-item-4" class="counter-item-4">+</button>
       </div>
-      <div class="energytally">
-          <button id="p1energyminus">-</button>
-          <p id="p1energyscore"></p>
-          <button id="p1energyplus">+</button>
+      <div class="energytally counter-grid">
+          <button id="p1energyminus" class="counter-item-2">-</button>
+          <p id="p1energyscore" class="counter-item-3"></p>
+          <button id="p1energyplus" class="counter-item-4">+</button>
       </div>
     </div>
     <!-- END PLAYER 1 -->
@@ -73,18 +73,23 @@
     </div>
     <!-- START P2 COUNTERS -->
     <div class="mGitem-5">
-      <div class="poisontally">
-        <button id="p2poisonminus">-</button>
-        <p id="p2poisonscore"></p>
-        <button id="p2poisonplus">+</button>
+      <div class="poisontally counter-grid">
+        <button id="p2poisonminus" class="counter-item-2">-</button>
+        <p id="p2poisonscore" class="counter-item-3"></p>
+        <button id="p2poisonplus" class="counter-item-4">+</button>
       </div>
-      <div class="energytally">
-        <button id="p2energyminus">-</button>
-        <p id="p2energyscore"></p>
-        <button id="p2energyplus">+</button>
+      <div class="energytally counter-grid">
+        <button id="p2energyminus" class="counter-item-2">-</button>
+        <p id="p2energyscore" class="counter-item-3"></p>
+        <button id="p2energyplus" class="counter-item-4">+</button>
       </div>
     </div>
     <!-- END PLAYER 2 -->
+    
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
     <script src="script/script.js"></script>
   </body>
 </html>

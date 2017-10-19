@@ -1,6 +1,6 @@
-const getId=function(x){return document.getElementById(x);}
-const getClass=function(x){return document.getElementsByClassName(x);}
-const getSelector=function(x){return document.querySelector(x);}
+const getId=function(x){return document.getElementById(x);};
+const getClass=function(x){return document.getElementsByClassName(x);};
+const getSelector=function(x){return document.querySelector(x);};
 
 //player scores, buttons and counters
 let p1 = {
@@ -22,7 +22,7 @@ let p1 = {
     minus: getId("p1energyminus"),
     plus: getId("p1energyplus")
   }
-}
+};
 let p2 = {
   score: 20,
   scoreElement: getId("p2Score"),
@@ -42,7 +42,7 @@ let p2 = {
     minus: getId("p2energyminus"),
     plus: getId("p2energyplus")
   }
-}
+};
 
 // define score in html
 p1.scoreElement.textContent = p1.score;
@@ -118,29 +118,32 @@ p2.plus5.onclick = function(e) {
 /////////////////
 
 // Set variables for key elements
-let navToggle = getId('button');
-let mainNav = getClass('menu');
+let navToggle = getId("button");
+let mainNav = getClass("menu");
 
 // loop for both lists either side of the menu
 // adding .collapsed to the mainNav(s)
-for (var i = 0; i < mainNav.length; i++) {
-  mainNav[i].classList.add('invisible');
-};
+function makeInvisible() {
+  for (let i = 0; i < mainNav.length; i++) {
+    mainNav[i].classList.add("invisible");
+  };
 
-for (var i = 0; i < mainNav.length; i++) {
-  getClass('invisible')[i].style.transition = 'ease-out all 0.3s';
-};
+  for (let i = 0; i < mainNav.length; i++) {
+    getClass("invisible")[i].style.transition = "ease-out all 0.3s";
+  };
+}
+makeInvisible();
 
 // Establish a function to toggle the class "collapse"
 function mainNavToggle() {
   for (var i = 0; i < mainNav.length; i++) {
-    mainNav[i].classList.toggle('invisible');
-    mainNav[i].classList.toggle('visible');
+    mainNav[i].classList.toggle("invisible");
+    mainNav[i].classList.toggle("visible");
   }
 }
 
 // Add a click event to run the mainNavToggle function
-navToggle.addEventListener('click', function(e) {
+navToggle.addEventListener("click", function(e) {
   e.preventDefault();
   mainNavToggle();
 });
@@ -150,7 +153,7 @@ navToggle.addEventListener('click', function(e) {
  /* Counter toggle */
 ////////////////////
 
-//p1.poison.scoreElement.textContent = p1.poison.score;
+p1.poison.scoreElement.textContent = p1.poison.score;
 p1.energy.scoreElement.textContent = p1.energy.score;
 p2.poison.scoreElement.textContent = p2.poison.score;
 p2.energy.scoreElement.textContent = p2.energy.score;
@@ -159,9 +162,9 @@ p2.energy.scoreElement.textContent = p2.energy.score;
  /* Reset button */
 //////////////////
 
-let reset = getId('reset');
+let reset = getId("reset");
 
-reset.addEventListener('click', function(e) {
+reset.addEventListener("click", function(e) {
   e.preventDefault();
   p1.score = 20;
   p2.score = 20;

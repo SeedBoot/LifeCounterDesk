@@ -81,6 +81,18 @@
   .menuGrid .menu-item-3 {
     grid-column: 4; }
 
+.counter-grid {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: auto 25% 25% 25% auto; }
+  .counter-grid .counter-item-2 {
+    grid-column: 2; }
+  .counter-grid .counter-item-3 {
+    grid-column: 3; }
+  .counter-grid .counter-item-4 {
+    grid-column: 4; }
+
 /* Global styling*/
 * {
   margin: 0;

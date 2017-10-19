@@ -73,7 +73,7 @@
   align-items: center;
   justify-items: center;
   grid-template-rows: auto 33% auto;
-  grid-template-columns: auto 25% 25% 25% auto; }
+  grid-template-columns: auto 35% 20% 35% auto; }
   .menuGrid .menu-item-1 {
     grid-column: 2; }
   .menuGrid .menu-item-2 {

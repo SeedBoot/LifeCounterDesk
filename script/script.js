@@ -164,6 +164,7 @@ p2.energy.scoreElement.textContent = p2.energy.score;
 
 let reset = getId("reset");
 
+// Resets scores and counters back to default
 reset.addEventListener("click", function(e) {
   e.preventDefault();
   p1.score = 20;

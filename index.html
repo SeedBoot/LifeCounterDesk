@@ -12,7 +12,7 @@
     <!--CSS-->
     <link rel="stylesheet" href="style/export/style.css" type="text/css">
     <!--FONTS-->
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=#" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
     <!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -26,8 +26,18 @@
       <button id="p1plus" class="item-4">+</button>
       <button id="p1plus5" class="item-5">+5</button>
     </div>
+    <!-- START P1 COUNTERS -->
     <div class="mGitem-3">
-
+      <div class="poisontally counter-grid">
+        <button id="p1poisonminus" class="counter-item-2">-</button>
+        <p id="p1poisonscore" class="counter-item-3"></p>
+        <button id="p1poisonpluscounter-item-4" class="counter-item-4">+</button>
+      </div>
+      <div class="energytally counter-grid">
+          <button id="p1energyminus" class="counter-item-2">-</button>
+          <p id="p1energyscore" class="counter-item-3"></p>
+          <button id="p1energyplus" class="counter-item-4">+</button>
+      </div>
     </div>
     <!-- END PLAYER 1 -->
 
@@ -61,10 +71,25 @@
       <button id="p2plus" class="item-4">+</button>
       <button id="p2plus5" class="item-5">+5</button>
     </div>
+    <!-- START P2 COUNTERS -->
     <div class="mGitem-5">
-
+      <div class="poisontally counter-grid">
+        <button id="p2poisonminus" class="counter-item-2">-</button>
+        <p id="p2poisonscore" class="counter-item-3"></p>
+        <button id="p2poisonplus" class="counter-item-4">+</button>
+      </div>
+      <div class="energytally counter-grid">
+        <button id="p2energyminus" class="counter-item-2">-</button>
+        <p id="p2energyscore" class="counter-item-3"></p>
+        <button id="p2energyplus" class="counter-item-4">+</button>
+      </div>
     </div>
     <!-- END PLAYER 2 -->
+    
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
     <script src="script/script.js"></script>
   </body>
 </html>

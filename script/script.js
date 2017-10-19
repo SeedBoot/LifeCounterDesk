@@ -1,6 +1,6 @@
-const getId=function(x){return document.getElementById(x);}
-const getClass=function(x){return document.getElementsByClassName(x);}
-const getSelector=function(x){return document.querySelector(x);}
+const getId=function(x){return document.getElementById(x);};
+const getClass=function(x){return document.getElementsByClassName(x);};
+const getSelector=function(x){return document.querySelector(x);};
 
 //player scores, buttons and counters
 let p1 = {
@@ -10,9 +10,19 @@ let p1 = {
   plus: getId("p1plus"),
   minus5: getId("p1minus5"),
   plus5: getId("p1plus5"),
-  poison: 0,
-  energy: 0
-}
+  poison: {
+    score: 0,
+    scoreElement: getId("p1poisonscore"),
+    minus: getId("p1poisonminus"),
+    plus: getId("p1poisonplus")
+  },
+  energy: {
+    score: 0,
+    scoreElement: getId("p1energyscore"),
+    minus: getId("p1energyminus"),
+    plus: getId("p1energyplus")
+  }
+};
 let p2 = {
   score: 20,
   scoreElement: getId("p2Score"),
@@ -20,16 +30,26 @@ let p2 = {
   plus: getId("p2plus"),
   minus5: getId("p2minus5"),
   plus5: getId("p2plus5"),
-  poison: 0,
-  energy: 0
-}
+  poison: {
+    score: 0,
+    scoreElement: getId("p2poisonscore"),
+    minus: getId("p2poisonminus"),
+    plus: getId("p2poisonplus")
+  },
+  energy: {
+    score: 0,
+    scoreElement: getId("p2energyscore"),
+    minus: getId("p2energyminus"),
+    plus: getId("p2energyplus")
+  }
+};
 
 // define score in html
 p1.scoreElement.textContent = p1.score;
 p2.scoreElement.textContent = p2.score;
 
   //////////////
- //  -1  +1  //
+ /*  -1  +1  */
 //////////////
 
 // functions to add or remove score
@@ -61,7 +81,7 @@ p2.plus.onclick = function(e) {
 };
 
   //////////////
- //  -5  +5  //
+ /*  -5  +5  */
 //////////////
 
 // functions to add or remove score
@@ -93,45 +113,58 @@ p2.plus5.onclick = function(e) {
 };
 /* END SCORE BUTTONS */
 
-////////////////////////////////////
-/*///////// Toggle Menu /////////*/
-//////////////////////////////////
+  /////////////////
+ /* Toggle Menu */
+/////////////////
+
 // Set variables for key elements
-let navToggle = getId('button');
-let mainNav = getClass('menu');
+let navToggle = getId("button");
+let mainNav = getClass("menu");
 
 // loop for both lists either side of the menu
 // adding .collapsed to the mainNav(s)
-for (var i = 0; i < mainNav.length; i++) {
-  mainNav[i].classList.add('invisible');
-};
+function makeInvisible() {
+  for (let i = 0; i < mainNav.length; i++) {
+    mainNav[i].classList.add("invisible");
+  };
 
-for (var i = 0; i < mainNav.length; i++) {
-  getClass('invisible')[i].style.transition = 'ease-out all 0.3s';
-};
+  for (let i = 0; i < mainNav.length; i++) {
+    getClass("invisible")[i].style.transition = "ease-out all 0.3s";
+  };
+}
+makeInvisible();
 
 // Establish a function to toggle the class "collapse"
 function mainNavToggle() {
   for (var i = 0; i < mainNav.length; i++) {
-    mainNav[i].classList.toggle('invisible');
-    mainNav[i].classList.toggle('visible');
+    mainNav[i].classList.toggle("invisible");
+    mainNav[i].classList.toggle("visible");
   }
 }
 
 // Add a click event to run the mainNavToggle function
-navToggle.addEventListener('click', function(e) {
+navToggle.addEventListener("click", function(e) {
   e.preventDefault();
   mainNavToggle();
 });
 /* END MENU TOGGLE */
 
-///////////////////
-/* Reset button */
-/////////////////
+  ////////////////////
+ /* Counter toggle */
+////////////////////
 
-let reset = getId('reset');
+p1.poison.scoreElement.textContent = p1.poison.score;
+p1.energy.scoreElement.textContent = p1.energy.score;
+p2.poison.scoreElement.textContent = p2.poison.score;
+p2.energy.scoreElement.textContent = p2.energy.score;
 
-reset.addEventListener('click', function(e) {
+  //////////////////
+ /* Reset button */
+//////////////////
+
+let reset = getId("reset");
+
+reset.addEventListener("click", function(e) {
   e.preventDefault();
   p1.score = 20;
   p2.score = 20;

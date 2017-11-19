@@ -2,7 +2,52 @@ const getId=function(x){return document.getElementById(x);};
 const getClass=function(x){return document.getElementsByClassName(x);};
 const getSelector=function(x){return document.querySelector(x);};
 
+function player(player) {
+  this.score =        20;
+  this.scoreElement = getId("p" + player + "Score");
+  this.minus =        getId("p" + player + "minus");
+  this.plus =         getId("p" + player + "plus");
+  this.minus5 =       getId("p" + player + "minus5");
+  this.plus5 =        getId("p" + player + "plus5");
+  this.poison = {
+    score:        0,
+    scoreElement: getId("p" + player + "poisonscore"),
+    minus:        getId("p" + player + "poisonminus"),
+    plus:         getId("p" + player + "poisonplus")
+  };
+  this.energy = {
+    score:        0,
+    scoreElement: getId("p" + player + "energyscore"),
+    minus:        getId("p" + player + "energyminus"),
+    plus:         getId("p" + player + "energyplus")
+  };
+  this.minusScore = function() {
+    this.score--;
+    this.scoreElement.textContent = this.score;
+  };
+  this.plusScore = function() {
+    this.score++;
+    this.scoreElement.textContent = this.score;
+  };
+    this.minus5Score = function() {
+    this.score -= 5;
+    this.scoreElement.textContent = this.score;
+  };
+  this.plus5Score = function() {
+    this.score += 5;
+    this.scoreElement.textContent = this.score;
+  };
+}
+
+player.minus.onclick = function(e) {
+  e.preventDefault();
+  this.minusScore();
+};
+
+let p1 = new player(1);
+let p2 = new player(2);
 //player scores, buttons and counters
+/*
 let p1 = {
   score: 20,
   scoreElement: getId("p1Score"),
@@ -44,15 +89,12 @@ let p2 = {
   }
 };
 
-// define score in html
-p1.scoreElement.textContent = p1.score;
-p2.scoreElement.textContent = p2.score;
-
   //////////////
  /*  -1  +1  */
 //////////////
 
 // functions to add or remove score
+/*
 function minusScore(player) {
   player.score--;
   player.scoreElement.textContent = player.score;
@@ -79,12 +121,13 @@ p2.plus.onclick = function(e) {
   e.preventDefault();
   plusScore(p2);
 };
-
+*/
   //////////////
  /*  -5  +5  */
 //////////////
 
 // functions to add or remove score
+/*
 function minus5Score(player) {
   player.score -= 5;
   player.scoreElement.textContent = player.score;
@@ -111,7 +154,12 @@ p2.plus5.onclick = function(e) {
   e.preventDefault();
   plus5Score(p2);
 };
+*/
 /* END SCORE BUTTONS */
+
+// define score in html
+p1.scoreElement.textContent = p1.score;
+p2.scoreElement.textContent = p2.score;
 
   /////////////////
  /* Toggle Menu */

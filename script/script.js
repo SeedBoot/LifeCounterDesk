@@ -39,11 +39,6 @@ function player(player) {
   };
 }
 
-player.minus.onclick = function(e) {
-  e.preventDefault();
-  this.minusScore();
-};
-
 let p1 = new player(1);
 let p2 = new player(2);
 //player scores, buttons and counters

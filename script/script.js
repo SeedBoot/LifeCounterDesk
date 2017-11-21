@@ -1,134 +1,74 @@
-const getId=function(x){return document.getElementById(x);};
-const getClass=function(x){return document.getElementsByClassName(x);};
-const getSelector=function(x){return document.querySelector(x);};
-
+/* Function to create player objects to keep score/ etc. */
 function player(player) {
   let play = "p" + player;
-
+  // Keeping score...
   this.score =        20;
-
-  this.scoreElement = getId(play + "Score");
-  this.minus =        getId(play + "minus");
-  this.plus =         getId(play + "plus");
-  this.minus5 =       getId(play + "minus5");
-  this.plus5 =        getId(play + "plus5");
-
+  this.scoreElement = document.getElementById(play + "Score");
+  this.minus =        document.getElementById(play + "minus");
+  this.plus =         document.getElementById(play + "plus");
+  this.minus5 =       document.getElementById(play + "minus5");
+  this.plus5 =        document.getElementById(play + "plus5");
   this.poison = {
     score:        0,
-    scoreElement: getId(play + "poisonscore"),
-    minus:        getId(play + "poisonminus"),
-    plus:         getId(play + "poisonplus")
+    scoreElement: document.getElementById(play + "poisonscore"),
+    minus:        document.getElementById(play + "poisonminus"),
+    plus:         document.getElementById(play + "poisonplus")
   };
-
   this.energy = {
     score:        0,
-    scoreElement: getId(play + "energyscore"),
-    minus:        getId(play + "energyminus"),
-    plus:         getId(play + "energyplus")
+    scoreElement: document.getElementById(play + "energyscore"),
+    minus:        document.getElementById(play + "energyminus"),
+    plus:         document.getElementById(play + "energyplus")
   };
-
-  /*this.minusScore = function() {
+  // Initialise scores in HTML
+  this.scoreElement.textContent = this.score;
+  this.poison.scoreElement.textContent = this.poison.score;
+  this.energy.scoreElement.textContent = this.energy.score;
+  // Listeners for each score button
+  this.minus.addEventListener("click", function() {
     this.score--;
     this.scoreElement.textContent = this.score;
-  };*/
-  this.minus.onclick = function() {
-    this.score--;
-    this.scoreElement.textContent = this.score;
-  }.bind(this);
-
-  this.plus.onclick = function() {
+  }.bind(this) );
+  this.plus.addEventListener("click", function() {
     this.score++;
     this.scoreElement.textContent = this.score;
-  }.bind(this);
-
-  this.minus5.onclick = function() {
+  }.bind(this) );
+  this.minus5.addEventListener("click", function() {
     this.score -= 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this);
-
-  this.plus5.onclick = function() {
+  }.bind(this) );
+  this.plus5.addEventListener("click", function() {
     this.score += 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this);
-
-  this.poison.minus.onclick = function() {
+  }.bind(this) );
+  this.poison.minus.addEventListener("click", function() {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this);
-
-  this.plus = function() {
+  }.bind(this) );
+  this.poison.plus.addEventListener("click", function() {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
-  };
-
-  this.minusEnergy = function() {
+  }.bind(this) );
+  this.energy.minus.addEventListener("click", function() {
     this.energy.score--;
     this.energy.scoreElement.textContent = this.energy.score;
-  };
-  this.plusEnergy = function() {
+  }.bind(this) );
+  this.energy.plus.addEventListener("click", function() {
     this.energy.score++;
     this.energy.scoreElement.textContent = this.energy.score;
-  };
+  }.bind(this) );
 }
 
 let p1 = new player(1);
 let p2 = new player(2);
-
-console.log(p1);
-console.log(p2);
-/* listeners to change score */
-/* PLAYER 1 */
-/*  -1  +1  */
-/*p1.minus.onclick = function(e) {
-  e.preventDefault();
-  p1.minusScore();
-};
-p1.plus.onclick = function(e) {
-  e.preventDefault();
-  p1.plusScore();
-};*/
-
-/*  -5  +5  
-p1.minus5.onclick = function(e) {
-  e.preventDefault();
-  p1.minus5Score();
-};
-p1.plus5.onclick = function(e) {
-  e.preventDefault();
-  p1.plus5Score();
-};
-*/
-/*p2.minus.onclick = function(e) {
-  e.preventDefault();
-  p2.minusScore();
-};
-p2.plus.onclick = function(e) {
-  e.preventDefault();
-  p2.plusScore();
-};
-
-p2.minus5.onclick = function(e) {
-  e.preventDefault();
-  p2.minus5Score();
-};
-p2.plus5.onclick = function(e) {
-  e.preventDefault();
-  p2.plus5Score();
-};*/
-
-/* END SCORE BUTTONS */
-
-// define score in html
-p1.scoreElement.textContent = p1.score;
-p2.scoreElement.textContent = p2.score;
 
   /////////////////
  /* Toggle Menu */
 /////////////////
 
 // Set variables for key elements
-let navToggle = getId("button");
-let mainNav = getClass("menu");
+let navToggle = document.getElementById("button");
+let mainNav = document.getElementsByClassName("menu");
 
 // loop for both lists either side of the menu
 // adding .collapsed to the mainNav(s)
@@ -138,7 +78,7 @@ function makeInvisible() {
   };
 
   for (let i = 0; i < mainNav.length; i++) {
-    getClass("invisible")[i].style.transition = "ease-out all 0.3s";
+    document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
   };
 }
 makeInvisible();
@@ -162,23 +102,26 @@ navToggle.addEventListener("click", function(e) {
  /* Counter toggle */
 ////////////////////
 
-p1.poison.scoreElement.textContent = p1.poison.score;
-p1.energy.scoreElement.textContent = p1.energy.score;
-p2.poison.scoreElement.textContent = p2.poison.score;
-p2.energy.scoreElement.textContent = p2.energy.score;
-
   //////////////////
  /* Reset button */
 //////////////////
 
-let reset = getId("reset");
+let reset = document.getElementById("reset");
 
 // Resets scores and counters back to default
 reset.addEventListener("click", function(e) {
   e.preventDefault();
   p1.score = 20;
+  p1.poison.score = 0;
+  p1.energy.score = 0;
   p2.score = 20;
+  p2.poison.score = 0;
+  p2.energy.score = 0;
   p1.scoreElement.textContent = p1.score;
+  p1.poison.scoreElement.textContent = p1.poison.score;
+  p1.energy.scoreElement.textContent = p1.energy.score;
   p2.scoreElement.textContent = p2.score;
+  p2.poison.scoreElement.textContent = p2.poison.score;
+  p2.energy.scoreElement.textContent = p2.energy.score;
 });
 /* END RESET BUTTON */

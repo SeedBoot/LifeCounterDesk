@@ -32,29 +32,31 @@ function player(player) {
     this.scoreElement.textContent = this.score;
   };*/
   this.minus.onclick = function() {
-    //e.preventDefault();
     this.score--;
     this.scoreElement.textContent = this.score;
   }.bind(this);
-  this.plusScore = function() {
+
+  this.plus.onclick = function() {
     this.score++;
     this.scoreElement.textContent = this.score;
-  };
+  }.bind(this);
 
-    this.minus5Score = function() {
+  this.minus5.onclick = function() {
     this.score -= 5;
     this.scoreElement.textContent = this.score;
-  };
-  this.plus5Score = function() {
+  }.bind(this);
+
+  this.plus5.onclick = function() {
     this.score += 5;
     this.scoreElement.textContent = this.score;
-  };
+  }.bind(this);
 
-  this.minusPoison = function() {
+  this.poison.minus.onclick = function() {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
-  };
-  this.plusPoison = function() {
+  }.bind(this);
+
+  this.plus = function() {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
   };
@@ -80,13 +82,13 @@ console.log(p2);
 /*p1.minus.onclick = function(e) {
   e.preventDefault();
   p1.minusScore();
-};*/
+};
 p1.plus.onclick = function(e) {
   e.preventDefault();
   p1.plusScore();
-};
+};*/
 
-/*  -5  +5  */
+/*  -5  +5  
 p1.minus5.onclick = function(e) {
   e.preventDefault();
   p1.minus5Score();
@@ -95,8 +97,8 @@ p1.plus5.onclick = function(e) {
   e.preventDefault();
   p1.plus5Score();
 };
-
-p2.minus.onclick = function(e) {
+*/
+/*p2.minus.onclick = function(e) {
   e.preventDefault();
   p2.minusScore();
 };
@@ -112,7 +114,7 @@ p2.minus5.onclick = function(e) {
 p2.plus5.onclick = function(e) {
   e.preventDefault();
   p2.plus5Score();
-};
+};*/
 
 /* END SCORE BUTTONS */
 

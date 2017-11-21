@@ -3,32 +3,44 @@ const getClass=function(x){return document.getElementsByClassName(x);};
 const getSelector=function(x){return document.querySelector(x);};
 
 function player(player) {
+  let play = "p" + player;
+
   this.score =        20;
-  this.scoreElement = getId("p" + player + "Score");
-  this.minus =        getId("p" + player + "minus");
-  this.plus =         getId("p" + player + "plus");
-  this.minus5 =       getId("p" + player + "minus5");
-  this.plus5 =        getId("p" + player + "plus5");
+
+  this.scoreElement = getId(play + "Score");
+  this.minus =        getId(play + "minus");
+  this.plus =         getId(play + "plus");
+  this.minus5 =       getId(play + "minus5");
+  this.plus5 =        getId(play + "plus5");
+
   this.poison = {
     score:        0,
-    scoreElement: getId("p" + player + "poisonscore"),
-    minus:        getId("p" + player + "poisonminus"),
-    plus:         getId("p" + player + "poisonplus")
+    scoreElement: getId(play + "poisonscore"),
+    minus:        getId(play + "poisonminus"),
+    plus:         getId(play + "poisonplus")
   };
+
   this.energy = {
     score:        0,
-    scoreElement: getId("p" + player + "energyscore"),
-    minus:        getId("p" + player + "energyminus"),
-    plus:         getId("p" + player + "energyplus")
+    scoreElement: getId(play + "energyscore"),
+    minus:        getId(play + "energyminus"),
+    plus:         getId(play + "energyplus")
   };
-  this.minusScore = function() {
+
+  /*this.minusScore = function() {
     this.score--;
     this.scoreElement.textContent = this.score;
-  };
+  };*/
+  this.minus.onclick = function() {
+    //e.preventDefault();
+    this.score--;
+    this.scoreElement.textContent = this.score;
+  }.bind(this);
   this.plusScore = function() {
     this.score++;
     this.scoreElement.textContent = this.score;
   };
+
     this.minus5Score = function() {
     this.score -= 5;
     this.scoreElement.textContent = this.score;
@@ -37,6 +49,7 @@ function player(player) {
     this.score += 5;
     this.scoreElement.textContent = this.score;
   };
+
   this.minusPoison = function() {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
@@ -45,6 +58,7 @@ function player(player) {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
   };
+
   this.minusEnergy = function() {
     this.energy.score--;
     this.energy.scoreElement.textContent = this.energy.score;
@@ -57,73 +71,22 @@ function player(player) {
 
 let p1 = new player(1);
 let p2 = new player(2);
-//player scores, buttons and counters
-/*
-let p1 = {
-  score: 20,
-  scoreElement: getId("p1Score"),
-  minus: getId("p1minus"),
-  plus: getId("p1plus"),
-  minus5: getId("p1minus5"),
-  plus5: getId("p1plus5"),
-  poison: {
-    score: 0,
-    scoreElement: getId("p1poisonscore"),
-    minus: getId("p1poisonminus"),
-    plus: getId("p1poisonplus")
-  },
-  energy: {
-    score: 0,
-    scoreElement: getId("p1energyscore"),
-    minus: getId("p1energyminus"),
-    plus: getId("p1energyplus")
-  }
-};
-let p2 = {
-  score: 20,
-  scoreElement: getId("p2Score"),
-  minus: getId("p2minus"),
-  plus: getId("p2plus"),
-  minus5: getId("p2minus5"),
-  plus5: getId("p2plus5"),
-  poison: {
-    score: 0,
-    scoreElement: getId("p2poisonscore"),
-    minus: getId("p2poisonminus"),
-    plus: getId("p2poisonplus")
-  },
-  energy: {
-    score: 0,
-    scoreElement: getId("p2energyscore"),
-    minus: getId("p2energyminus"),
-    plus: getId("p2energyplus")
-  }
-};
 
-  //////////////
- /*  -1  +1  */
-//////////////
-
-// functions to add or remove score
-/*
-function minusScore(player) {
-  player.score--;
-  player.scoreElement.textContent = player.score;
-}
-function plusScore(player) {
-  player.score++;
-  player.scoreElement.textContent = player.score;
-}
-*/
-// listeners to change score
-p1.minus.onclick = function(e) {
+console.log(p1);
+console.log(p2);
+/* listeners to change score */
+/* PLAYER 1 */
+/*  -1  +1  */
+/*p1.minus.onclick = function(e) {
   e.preventDefault();
   p1.minusScore();
-};
+};*/
 p1.plus.onclick = function(e) {
   e.preventDefault();
   p1.plusScore();
 };
+
+/*  -5  +5  */
 p1.minus5.onclick = function(e) {
   e.preventDefault();
   p1.minus5Score();
@@ -141,6 +104,7 @@ p2.plus.onclick = function(e) {
   e.preventDefault();
   p2.plusScore();
 };
+
 p2.minus5.onclick = function(e) {
   e.preventDefault();
   p2.minus5Score();
@@ -150,40 +114,6 @@ p2.plus5.onclick = function(e) {
   p2.plus5Score();
 };
 
-
-  //////////////
- /*  -5  +5  */
-//////////////
-
-// functions to add or remove score
-/*
-function minus5Score(player) {
-  player.score -= 5;
-  player.scoreElement.textContent = player.score;
-}
-function plus5Score(player) {
-  player.score += 5;
-  player.scoreElement.textContent = player.score;
-}
-
-// listeners to change score
-p1.minus5.onclick = function(e) {
-  e.preventDefault();
-  minus5Score(p1);
-};
-p1.plus5.onclick = function(e) {
-  e.preventDefault();
-  plus5Score(p1);
-};
-p2.minus5.onclick = function(e) {
-  e.preventDefault();
-  minus5Score(p2);
-};
-p2.plus5.onclick = function(e) {
-  e.preventDefault();
-  plus5Score(p2);
-};
-*/
 /* END SCORE BUTTONS */
 
 // define score in html

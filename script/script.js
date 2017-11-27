@@ -61,48 +61,70 @@ function player(player) {
 
 let p1 = new player(1);
 let p2 = new player(2);
+/* END PLAYER CREATION */
 
-  /////////////////
+
  /* Toggle Menu */
 /////////////////
 
 // Set variables for key elements
 let navToggle = document.getElementById("button");
 let mainNav = document.getElementsByClassName("menu");
+let poisonTally = document.getElementsByClassName("poisontally");
+let energyTally = document.getElementsByClassName("energytally");
+let poisonButton = document.getElementById("poison");
+let energyButton = document.getElementById("energy");
 
-// loop for both lists either side of the menu
-// adding .collapsed to the mainNav(s)
-function makeInvisible() {
-  for (let i = 0; i < mainNav.length; i++) {
-    mainNav[i].classList.add("invisible");
-  };
-
-  for (let i = 0; i < mainNav.length; i++) {
-    document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
-  };
+let menuFunction = {
+  forceInvisible: // Make target element invisble
+    function(el) {
+      for (let i = 0; i < el.length; i++) {
+        el[i].classList.add("invisible");
+      };
+      for (let i = 0; i < el.length; i++) {
+        document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
+      };
+  },
+  toggleVisible: // Establish a function to toggle the class "collapse"
+    function(el) {
+      for (var i = 0; i < el.length; i++) {
+        el[i].classList.toggle("invisible");
+      }
+  }
 }
-makeInvisible();
+
+menuFunction.forceInvisible(mainNav);
+menuFunction.forceInvisible(poisonTally);
+menuFunction.forceInvisible(energyTally);
 
 // Establish a function to toggle the class "collapse"
 function mainNavToggle() {
   for (var i = 0; i < mainNav.length; i++) {
     mainNav[i].classList.toggle("invisible");
-    mainNav[i].classList.toggle("visible");
   }
 }
 
 // Add a click event to run the mainNavToggle function
 navToggle.addEventListener("click", function(e) {
   e.preventDefault();
-  mainNavToggle();
+  menuFunction.toggleVisible(mainNav);
+});
+poisonButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  menuFunction.toggleVisible(poisonTally);
+});
+energyButton.addEventListener("click", function(e) {
+  e.preventDefault();
+  menuFunction.toggleVisible(energyTally);
 });
 /* END MENU TOGGLE */
 
-  ////////////////////
  /* Counter toggle */
 ////////////////////
 
-  //////////////////
+
+/* END COUNTER TOGGLE */
+
  /* Reset button */
 //////////////////
 

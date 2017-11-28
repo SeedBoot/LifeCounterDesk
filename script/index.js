@@ -72,10 +72,12 @@ let p2 = new Player(2);
 const navToggle    = document.getElementById("button");
 const poisonButton = document.getElementById("poison");
 const energyButton = document.getElementById("energy");
+const keyBtn       = [navToggle, poisonButton, energyButton];
 // target areas or menus
 const mainNav      = document.getElementsByClassName("menu");
 const poisonTally  = document.getElementsByClassName("poisontally");
 const energyTally  = document.getElementsByClassName("energytally");
+const keyArea      = [mainNav, poisonTally, energyTally];
 
 let menuFunction = {
   forceInvisible: // Make target element invisble
@@ -95,9 +97,13 @@ let menuFunction = {
   }
 }
 
-/*const bundleFunction = function() {
+const bundleFunction = function() {
+  for (let i = 0; i < keyBtn.length; i++) {
+    menuFunction.forceInvisible(keyArea[i])
+    ///////////////////////////////////////////////////
+  }
+};
 
-};*/
 menuFunction.forceInvisible(mainNav);
 menuFunction.forceInvisible(poisonTally);
 menuFunction.forceInvisible(energyTally);

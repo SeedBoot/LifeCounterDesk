@@ -143,10 +143,12 @@ var p2 = new Player(2);
 var navToggle = document.getElementById("button");
 var poisonButton = document.getElementById("poison");
 var energyButton = document.getElementById("energy");
+var keyBtn = [navToggle, poisonButton, energyButton];
 // target areas or menus
 var mainNav = document.getElementsByClassName("menu");
 var poisonTally = document.getElementsByClassName("poisontally");
 var energyTally = document.getElementsByClassName("energytally");
+var keyArea = [mainNav, poisonTally, energyTally];
 
 var menuFunction = {
   forceInvisible: // Make target element invisble
@@ -164,11 +166,16 @@ var menuFunction = {
       el[i].classList.toggle("invisible");
     }
   }
+};
 
-  /*const bundleFunction = function() {
-  
-  };*/
-};menuFunction.forceInvisible(mainNav);
+var bundleFunction = function bundleFunction() {
+  for (var i = 0; i < keyBtn.length; i++) {
+    menuFunction.forceInvisible(keyArea[i]);
+    ///////////////////////////////////////////////////
+  }
+};
+
+menuFunction.forceInvisible(mainNav);
 menuFunction.forceInvisible(poisonTally);
 menuFunction.forceInvisible(energyTally);
 

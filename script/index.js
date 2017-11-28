@@ -1,5 +1,5 @@
 /* Function to create player objects to keep score/ etc. */
-function player(player) {
+function Player(player) {
   let play = "p" + player;
   // Keeping score...
   this.score =        20;
@@ -59,8 +59,8 @@ function player(player) {
   }.bind(this) );
 }
 
-let p1 = new player(1);
-let p2 = new player(2);
+let p1 = new Player(1);
+let p2 = new Player(2);
 /* END PLAYER CREATION */
 
 
@@ -68,12 +68,14 @@ let p2 = new player(2);
 /////////////////
 
 // Set variables for key elements
-let navToggle = document.getElementById("button");
-let mainNav = document.getElementsByClassName("menu");
-let poisonTally = document.getElementsByClassName("poisontally");
-let energyTally = document.getElementsByClassName("energytally");
-let poisonButton = document.getElementById("poison");
-let energyButton = document.getElementById("energy");
+// Buttons
+const navToggle    = document.getElementById("button");
+const poisonButton = document.getElementById("poison");
+const energyButton = document.getElementById("energy");
+// target areas or menus
+const mainNav      = document.getElementsByClassName("menu");
+const poisonTally  = document.getElementsByClassName("poisontally");
+const energyTally  = document.getElementsByClassName("energytally");
 
 let menuFunction = {
   forceInvisible: // Make target element invisble
@@ -93,18 +95,14 @@ let menuFunction = {
   }
 }
 
+/*const bundleFunction = function() {
+
+};*/
 menuFunction.forceInvisible(mainNav);
 menuFunction.forceInvisible(poisonTally);
 menuFunction.forceInvisible(energyTally);
 
-// Establish a function to toggle the class "collapse"
-function mainNavToggle() {
-  for (var i = 0; i < mainNav.length; i++) {
-    mainNav[i].classList.toggle("invisible");
-  }
-}
-
-// Add a click event to run the mainNavToggle function
+// Add a click event to run the toggleVisible function
 navToggle.addEventListener("click", function(e) {
   e.preventDefault();
   menuFunction.toggleVisible(mainNav);
@@ -118,12 +116,6 @@ energyButton.addEventListener("click", function(e) {
   menuFunction.toggleVisible(energyTally);
 });
 /* END MENU TOGGLE */
-
- /* Counter toggle */
-////////////////////
-
-
-/* END COUNTER TOGGLE */
 
  /* Reset button */
 //////////////////

@@ -110,25 +110,15 @@ const forceInv = (() => {
 })();
 
 // Add a click event to run the toggleVisible function
-navToggle.onclick = e => {
-  e.preventDefault();
-  menuFunction.toggleVisible(mainNav);
-};
-poisonButton.onclick = e => {
-  e.preventDefault();
-  menuFunction.toggleVisible(poisonTally);
-};
-energyButton.onclick = e => {
-  e.preventDefault();
-  menuFunction.toggleVisible(energyTally);
-};
+navToggle.onclick    = () => { menuFunction.toggleVisible(mainNav); };
+poisonButton.onclick = () => { menuFunction.toggleVisible(poisonTally); };
+energyButton.onclick = () => { menuFunction.toggleVisible(energyTally); };
 /* END MENU TOGGLE */
 
  /* Reset button */
 //////////////////
 
-let reset = document.getElementById("reset");
-
+const reset = document.getElementById("reset");
 // Resets scores and counters back to default
 reset.onclick = e => {
   e.preventDefault();
@@ -146,3 +136,9 @@ reset.onclick = e => {
   p2.energy.scoreElement.textContent = p2.energy.score;
 };
 /* END RESET BUTTON */
+
+const colour = document.getElementById("colour");
+
+colour.onclick = () => {
+  
+};

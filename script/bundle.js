@@ -185,16 +185,13 @@ var forceInv = function () {
 }();
 
 // Add a click event to run the toggleVisible function
-navToggle.onclick = function (e) {
-  e.preventDefault();
+navToggle.onclick = function () {
   menuFunction.toggleVisible(mainNav);
 };
-poisonButton.onclick = function (e) {
-  e.preventDefault();
+poisonButton.onclick = function () {
   menuFunction.toggleVisible(poisonTally);
 };
-energyButton.onclick = function (e) {
-  e.preventDefault();
+energyButton.onclick = function () {
   menuFunction.toggleVisible(energyTally);
 };
 /* END MENU TOGGLE */
@@ -203,7 +200,6 @@ energyButton.onclick = function (e) {
 //////////////////
 
 var reset = document.getElementById("reset");
-
 // Resets scores and counters back to default
 reset.onclick = function (e) {
   e.preventDefault();
@@ -221,6 +217,10 @@ reset.onclick = function (e) {
   p2.energy.scoreElement.textContent = p2.energy.score;
 };
 /* END RESET BUTTON */
+
+var colour = document.getElementById("colour");
+
+colour.onclick = function () {};
 
 /***/ })
 /******/ ]);

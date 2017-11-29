@@ -72,6 +72,8 @@
 
 /* Function to create player objects to keep score/ etc. */
 function Player(player) {
+  var _this = this;
+
   var play = "p" + player;
   // Keeping score...
   this.score = 20;
@@ -97,38 +99,38 @@ function Player(player) {
   this.poison.scoreElement.textContent = this.poison.score;
   this.energy.scoreElement.textContent = this.energy.score;
   // Listeners for each score button
-  this.minus.addEventListener("click", function () {
-    this.score--;
-    this.scoreElement.textContent = this.score;
-  }.bind(this));
-  this.plus.addEventListener("click", function () {
-    this.score++;
-    this.scoreElement.textContent = this.score;
-  }.bind(this));
-  this.minus5.addEventListener("click", function () {
-    this.score -= 5;
-    this.scoreElement.textContent = this.score;
-  }.bind(this));
-  this.plus5.addEventListener("click", function () {
-    this.score += 5;
-    this.scoreElement.textContent = this.score;
-  }.bind(this));
-  this.poison.minus.addEventListener("click", function () {
-    this.poison.score--;
-    this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this));
-  this.poison.plus.addEventListener("click", function () {
-    this.poison.score++;
-    this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this));
-  this.energy.minus.addEventListener("click", function () {
-    this.energy.score--;
-    this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this));
-  this.energy.plus.addEventListener("click", function () {
-    this.energy.score++;
-    this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this));
+  this.minus.onclick = function () {
+    _this.score--;
+    _this.scoreElement.textContent = _this.score;
+  };
+  this.plus.onclick = function () {
+    _this.score++;
+    _this.scoreElement.textContent = _this.score;
+  };
+  this.minus5.onclick = function () {
+    _this.score -= 5;
+    _this.scoreElement.textContent = _this.score;
+  };
+  this.plus5.onclick = function () {
+    _this.score += 5;
+    _this.scoreElement.textContent = _this.score;
+  };
+  this.poison.minus.onclick = function () {
+    _this.poison.score--;
+    _this.poison.scoreElement.textContent = _this.poison.score;
+  };
+  this.poison.plus.onclick = function () {
+    _this.poison.score++;
+    _this.poison.scoreElement.textContent = _this.poison.score;
+  };
+  this.energy.minus.onclick = function () {
+    _this.energy.score--;
+    _this.energy.scoreElement.textContent = _this.energy.score;
+  };
+  this.energy.plus.onclick = function () {
+    _this.energy.score++;
+    _this.energy.scoreElement.textContent = _this.energy.score;
+  };
 }
 
 var p1 = new Player(1);
@@ -151,33 +153,30 @@ var energyTally = document.getElementsByClassName("energytally");
 var keyArea = [mainNav, poisonTally, energyTally];
 
 var menuFunction = {
-  forceInvisible: // Make target element invisble
-  function forceInvisible(el) {
-    for (var i = 0; i < el.length; i++) {
+  // Make target element invisble
+  forceInvisible: function forceInvisible(el) {
+    var i = 0;
+    while (i < el.length) {
       el[i].classList.add("invisible");
-    };
-    for (var _i = 0; _i < el.length; _i++) {
-      document.getElementsByClassName("invisible")[_i].style.transition = "ease-out all 0.3s";
+      document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
+      i++;
     };
   },
-  toggleVisible: // Establish a function to toggle the class "collapse"
-  function toggleVisible(el) {
+  // Establish a function to toggle the class "collapse"
+  toggleVisible: function toggleVisible(el) {
     for (var i = 0; i < el.length; i++) {
       el[i].classList.toggle("invisible");
     }
   }
 };
 
-var bundleFunction = function bundleFunction() {
-  for (var i = 0; i < keyBtn.length; i++) {
+var forceInv = function () {
+  var i = 0;
+  while (i < keyArea.length) {
     menuFunction.forceInvisible(keyArea[i]);
-    ///////////////////////////////////////////////////
+    i++;
   }
-};
-
-menuFunction.forceInvisible(mainNav);
-menuFunction.forceInvisible(poisonTally);
-menuFunction.forceInvisible(energyTally);
+}();
 
 // Add a click event to run the toggleVisible function
 navToggle.addEventListener("click", function (e) {

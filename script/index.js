@@ -25,38 +25,38 @@ function Player(player) {
   this.poison.scoreElement.textContent = this.poison.score;
   this.energy.scoreElement.textContent = this.energy.score;
   // Listeners for each score button
-  this.minus.addEventListener("click", function() {
+  this.minus.onclick = () => {
     this.score--;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.plus.addEventListener("click", function() {
+  };
+  this.plus.onclick = () => {
     this.score++;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.minus5.addEventListener("click", function() {
+  };
+  this.minus5.onclick = () => {
     this.score -= 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.plus5.addEventListener("click", function() {
+  };
+  this.plus5.onclick = () => {
     this.score += 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.poison.minus.addEventListener("click", function() {
+  };
+  this.poison.minus.onclick = () => {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this) );
-  this.poison.plus.addEventListener("click", function() {
+  };
+  this.poison.plus.onclick = () => {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this) );
-  this.energy.minus.addEventListener("click", function() {
+  };
+  this.energy.minus.onclick = () => {
     this.energy.score--;
     this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this) );
-  this.energy.plus.addEventListener("click", function() {
+  };
+  this.energy.plus.onclick = () => {
     this.energy.score++;
     this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this) );
+  };
 }
 
 let p1 = new Player(1);
@@ -80,33 +80,31 @@ const energyTally  = document.getElementsByClassName("energytally");
 const keyArea      = [mainNav, poisonTally, energyTally];
 
 let menuFunction = {
-  forceInvisible: // Make target element invisble
-    function(el) {
-      for (let i = 0; i < el.length; i++) {
-        el[i].classList.add("invisible");
-      };
-      for (let i = 0; i < el.length; i++) {
-        document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
-      };
+  // Make target element invisble
+  forceInvisible: el => {
+    let i = 0;
+    while(i < el.length) {
+      el[i].classList.add("invisible");
+      document.getElementsByClassName("invisible")[i]
+        .style.transition = "ease-out all 0.3s";
+      i++;
+    };
   },
-  toggleVisible: // Establish a function to toggle the class "collapse"
-    function(el) {
-      for (var i = 0; i < el.length; i++) {
-        el[i].classList.toggle("invisible");
-      }
-  }
-}
-
-const bundleFunction = function() {
-  for (let i = 0; i < keyBtn.length; i++) {
-    menuFunction.forceInvisible(keyArea[i])
-    ///////////////////////////////////////////////////
+  // Establish a function to toggle the class "collapse"
+  toggleVisible: el => {
+    for (var i = 0; i < el.length; i++) {
+      el[i].classList.toggle("invisible");
+    }
   }
 };
 
-menuFunction.forceInvisible(mainNav);
-menuFunction.forceInvisible(poisonTally);
-menuFunction.forceInvisible(energyTally);
+const forceInv = (() => {
+  let i = 0;
+  while (i < keyArea.length) {
+    menuFunction.forceInvisible(keyArea[i]);
+    i++;
+  }
+})();
 
 // Add a click event to run the toggleVisible function
 navToggle.addEventListener("click", function(e) {

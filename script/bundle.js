@@ -82,22 +82,26 @@ function Player(player) {
   this.plus = document.getElementById(play + "plus");
   this.minus5 = document.getElementById(play + "minus5");
   this.plus5 = document.getElementById(play + "plus5");
+
   this.poison = {
     score: 0,
     scoreElement: document.getElementById(play + "poisonscore"),
     minus: document.getElementById(play + "poisonminus"),
     plus: document.getElementById(play + "poisonplus")
   };
+
   this.energy = {
     score: 0,
     scoreElement: document.getElementById(play + "energyscore"),
     minus: document.getElementById(play + "energyminus"),
     plus: document.getElementById(play + "energyplus")
   };
+
   // Initialise scores in HTML
   this.scoreElement.textContent = this.score;
   this.poison.scoreElement.textContent = this.poison.score;
   this.energy.scoreElement.textContent = this.energy.score;
+
   // Listeners for each score button
   this.minus.onclick = function () {
     _this.score--;
@@ -107,6 +111,7 @@ function Player(player) {
     _this.score++;
     _this.scoreElement.textContent = _this.score;
   };
+
   this.minus5.onclick = function () {
     _this.score -= 5;
     _this.scoreElement.textContent = _this.score;
@@ -115,6 +120,7 @@ function Player(player) {
     _this.score += 5;
     _this.scoreElement.textContent = _this.score;
   };
+
   this.poison.minus.onclick = function () {
     _this.poison.score--;
     _this.poison.scoreElement.textContent = _this.poison.score;
@@ -123,6 +129,7 @@ function Player(player) {
     _this.poison.score++;
     _this.poison.scoreElement.textContent = _this.poison.score;
   };
+
   this.energy.minus.onclick = function () {
     _this.energy.score--;
     _this.energy.scoreElement.textContent = _this.energy.score;
@@ -132,7 +139,6 @@ function Player(player) {
     _this.energy.scoreElement.textContent = _this.energy.score;
   };
 }
-
 var p1 = new Player(1);
 var p2 = new Player(2);
 /* END PLAYER CREATION */
@@ -153,8 +159,8 @@ var energyTally = document.getElementsByClassName("energytally");
 var keyArea = [mainNav, poisonTally, energyTally];
 
 var menuFunction = {
-  // Make target element invisble
   forceInvisible: function forceInvisible(el) {
+    // Make target element invisble
     var i = 0;
     while (i < el.length) {
       el[i].classList.add("invisible");
@@ -162,8 +168,8 @@ var menuFunction = {
       i++;
     };
   },
-  // Establish a function to toggle the class "collapse"
   toggleVisible: function toggleVisible(el) {
+    // Establish a function to toggle the class "collapse"
     for (var i = 0; i < el.length; i++) {
       el[i].classList.toggle("invisible");
     }
@@ -179,18 +185,18 @@ var forceInv = function () {
 }();
 
 // Add a click event to run the toggleVisible function
-navToggle.addEventListener("click", function (e) {
+navToggle.onclick = function (e) {
   e.preventDefault();
   menuFunction.toggleVisible(mainNav);
-});
-poisonButton.addEventListener("click", function (e) {
+};
+poisonButton.onclick = function (e) {
   e.preventDefault();
   menuFunction.toggleVisible(poisonTally);
-});
-energyButton.addEventListener("click", function (e) {
+};
+energyButton.onclick = function (e) {
   e.preventDefault();
   menuFunction.toggleVisible(energyTally);
-});
+};
 /* END MENU TOGGLE */
 
 /* Reset button */
@@ -199,7 +205,7 @@ energyButton.addEventListener("click", function (e) {
 var reset = document.getElementById("reset");
 
 // Resets scores and counters back to default
-reset.addEventListener("click", function (e) {
+reset.onclick = function (e) {
   e.preventDefault();
   p1.score = 20;
   p1.poison.score = 0;
@@ -213,7 +219,7 @@ reset.addEventListener("click", function (e) {
   p2.scoreElement.textContent = p2.score;
   p2.poison.scoreElement.textContent = p2.poison.score;
   p2.energy.scoreElement.textContent = p2.energy.score;
-});
+};
 /* END RESET BUTTON */
 
 /***/ })

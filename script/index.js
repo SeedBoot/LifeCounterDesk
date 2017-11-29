@@ -1,5 +1,5 @@
 /* Function to create player objects to keep score/ etc. */
-function player(player) {
+function Player(player) {
   let play = "p" + player;
   // Keeping score...
   this.score =        20;
@@ -25,42 +25,42 @@ function player(player) {
   this.poison.scoreElement.textContent = this.poison.score;
   this.energy.scoreElement.textContent = this.energy.score;
   // Listeners for each score button
-  this.minus.addEventListener("click", function() {
+  this.minus.onclick = () => {
     this.score--;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.plus.addEventListener("click", function() {
+  };
+  this.plus.onclick = () => {
     this.score++;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.minus5.addEventListener("click", function() {
+  };
+  this.minus5.onclick = () => {
     this.score -= 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.plus5.addEventListener("click", function() {
+  };
+  this.plus5.onclick = () => {
     this.score += 5;
     this.scoreElement.textContent = this.score;
-  }.bind(this) );
-  this.poison.minus.addEventListener("click", function() {
+  };
+  this.poison.minus.onclick = () => {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this) );
-  this.poison.plus.addEventListener("click", function() {
+  };
+  this.poison.plus.onclick = () => {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
-  }.bind(this) );
-  this.energy.minus.addEventListener("click", function() {
+  };
+  this.energy.minus.onclick = () => {
     this.energy.score--;
     this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this) );
-  this.energy.plus.addEventListener("click", function() {
+  };
+  this.energy.plus.onclick = () => {
     this.energy.score++;
     this.energy.scoreElement.textContent = this.energy.score;
-  }.bind(this) );
+  };
 }
 
-let p1 = new player(1);
-let p2 = new player(2);
+let p1 = new Player(1);
+let p2 = new Player(2);
 /* END PLAYER CREATION */
 
 
@@ -68,43 +68,45 @@ let p2 = new player(2);
 /////////////////
 
 // Set variables for key elements
-let navToggle = document.getElementById("button");
-let mainNav = document.getElementsByClassName("menu");
-let poisonTally = document.getElementsByClassName("poisontally");
-let energyTally = document.getElementsByClassName("energytally");
-let poisonButton = document.getElementById("poison");
-let energyButton = document.getElementById("energy");
+// Buttons
+const navToggle    = document.getElementById("button");
+const poisonButton = document.getElementById("poison");
+const energyButton = document.getElementById("energy");
+const keyBtn       = [navToggle, poisonButton, energyButton];
+// target areas or menus
+const mainNav      = document.getElementsByClassName("menu");
+const poisonTally  = document.getElementsByClassName("poisontally");
+const energyTally  = document.getElementsByClassName("energytally");
+const keyArea      = [mainNav, poisonTally, energyTally];
 
 let menuFunction = {
-  forceInvisible: // Make target element invisble
-    function(el) {
-      for (let i = 0; i < el.length; i++) {
-        el[i].classList.add("invisible");
-      };
-      for (let i = 0; i < el.length; i++) {
-        document.getElementsByClassName("invisible")[i].style.transition = "ease-out all 0.3s";
-      };
+  // Make target element invisble
+  forceInvisible: el => {
+    let i = 0;
+    while(i < el.length) {
+      el[i].classList.add("invisible");
+      document.getElementsByClassName("invisible")[i]
+        .style.transition = "ease-out all 0.3s";
+      i++;
+    };
   },
-  toggleVisible: // Establish a function to toggle the class "collapse"
-    function(el) {
-      for (var i = 0; i < el.length; i++) {
-        el[i].classList.toggle("invisible");
-      }
+  // Establish a function to toggle the class "collapse"
+  toggleVisible: el => {
+    for (var i = 0; i < el.length; i++) {
+      el[i].classList.toggle("invisible");
+    }
   }
-}
+};
 
-menuFunction.forceInvisible(mainNav);
-menuFunction.forceInvisible(poisonTally);
-menuFunction.forceInvisible(energyTally);
-
-// Establish a function to toggle the class "collapse"
-function mainNavToggle() {
-  for (var i = 0; i < mainNav.length; i++) {
-    mainNav[i].classList.toggle("invisible");
+const forceInv = (() => {
+  let i = 0;
+  while (i < keyArea.length) {
+    menuFunction.forceInvisible(keyArea[i]);
+    i++;
   }
-}
+})();
 
-// Add a click event to run the mainNavToggle function
+// Add a click event to run the toggleVisible function
 navToggle.addEventListener("click", function(e) {
   e.preventDefault();
   menuFunction.toggleVisible(mainNav);
@@ -118,12 +120,6 @@ energyButton.addEventListener("click", function(e) {
   menuFunction.toggleVisible(energyTally);
 });
 /* END MENU TOGGLE */
-
- /* Counter toggle */
-////////////////////
-
-
-/* END COUNTER TOGGLE */
 
  /* Reset button */
 //////////////////

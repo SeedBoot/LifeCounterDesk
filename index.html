@@ -17,7 +17,8 @@
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body class="mainGrid">
+  <body>
+    <main class="mainGrid">
     <!-- START PLAYER 1 -->
     <div id="player1" class="mGitem-2 playerGrid">
       <button id="p1minus5" class="item-1">-5</button>
@@ -57,10 +58,31 @@
       </div>
       <!-- Menu 2 -->
       <ul class="menu menu-item-3">
-        <li id="colour" class="rainbow">Colour</li>
+        <li id="color" class="rainbow">Colour</li>
         <li>Life</li>
       </ul>
     </div>
+
+    <div class="colormenu">
+        <label for="p1theme">Player 1: </label>
+        <select id="p1theme">
+          <option value="white">White</option>
+          <option value="blue">Blue</option>
+          <option value="black">Black</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="purple">Purple</option>
+        </select>
+        <label for="p2theme">Player 2: </label>
+        <select id="p2theme">
+          <option value="white">White</option>
+          <option value="blue">Blue</option>
+          <option value="black">Black</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="purple">Purple</option>
+        </select>
+      </div>
     <!-- END MENU -->
 
     <!-- START PLAYER 2 -->
@@ -86,6 +108,7 @@
     </div>
     <!-- END PLAYER 2 -->
     
+  </main>
     <!--script>
       // You can also require other files to run in this process
       require('./renderer.js')

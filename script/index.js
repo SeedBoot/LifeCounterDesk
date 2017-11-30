@@ -1,6 +1,8 @@
-/* Function to create player objects to keep score/ etc. */
+/* PLAYER CREATION FUNCTION */
 function Player(player) {
   let play = "p" + player;
+  let num = player;
+
   // Keeping score...
   this.score =        20;
   this.scoreElement = document.getElementById(play + "Score");
@@ -9,26 +11,6 @@ function Player(player) {
   this.minus5 =       document.getElementById(play + "minus5");
   this.plus5 =        document.getElementById(play + "plus5");
 
-  this.poison = {
-    score:        0,
-    scoreElement: document.getElementById(play + "poisonscore"),
-    minus:        document.getElementById(play + "poisonminus"),
-    plus:         document.getElementById(play + "poisonplus")
-  };
-
-  this.energy = {
-    score:        0,
-    scoreElement: document.getElementById(play + "energyscore"),
-    minus:        document.getElementById(play + "energyminus"),
-    plus:         document.getElementById(play + "energyplus")
-  };
-
-  // Initialise scores in HTML
-  this.scoreElement.textContent = this.score;
-  this.poison.scoreElement.textContent = this.poison.score;
-  this.energy.scoreElement.textContent = this.energy.score;
-
-  // Listeners for each score button
   this.minus.onclick = () => {
     this.score--;
     this.scoreElement.textContent = this.score;
@@ -47,6 +29,13 @@ function Player(player) {
     this.scoreElement.textContent = this.score;
   };
 
+  this.poison = {
+    score:        0,
+    scoreElement: document.getElementById(play + "poisonscore"),
+    minus:        document.getElementById(play + "poisonminus"),
+    plus:         document.getElementById(play + "poisonplus")
+  };
+
   this.poison.minus.onclick = () => {
     this.poison.score--;
     this.poison.scoreElement.textContent = this.poison.score;
@@ -54,6 +43,13 @@ function Player(player) {
   this.poison.plus.onclick = () => {
     this.poison.score++;
     this.poison.scoreElement.textContent = this.poison.score;
+  };
+
+  this.energy = {
+    score:        0,
+    scoreElement: document.getElementById(play + "energyscore"),
+    minus:        document.getElementById(play + "energyminus"),
+    plus:         document.getElementById(play + "energyplus")
   };
 
   this.energy.minus.onclick = () => {
@@ -64,25 +60,60 @@ function Player(player) {
     this.energy.score++;
     this.energy.scoreElement.textContent = this.energy.score;
   };
+
+  // Initialise scores in HTML
+  this.scoreElement.textContent = this.score;
+  this.poison.scoreElement.textContent = this.poison.score;
+  this.energy.scoreElement.textContent = this.energy.score;  
+
+  this.color = {
+    element: document.getElementById(play + "theme"),
+    target: document.getElementById("player" + num),
+    update: (bgColor, textColor) => {
+      this.color.target.style.background = bgColor;
+      this.color.target.style.color = textColor;
+    }
+  };
+
+  this.color.element.onchange = () => {
+    let choice = this.color.element.value;
+    let updoot = this.color.update;
+    switch (choice) {
+      case 'white': updoot('white', 'black');
+        break;
+      case 'blue': updoot('blue', 'white');
+        break;
+      case 'black': updoot('black', 'white');
+        break;
+      case 'red': updoot('red', 'black');
+        break;
+      case 'green': updoot('green', 'black');
+        break;
+      case 'purple': updoot('purple', 'white');
+        break;
+      default: updoot('white', 'black');
+        break;
+    }
+  };
 }
+
 let p1 = new Player(1);
 let p2 = new Player(2);
 /* END PLAYER CREATION */
 
- /* Toggle Menu */
-/////////////////
-
-// Set variables for key elements
+ /* TOGGLE MENU */
 // Buttons
 const navToggle    = document.getElementById("button");
 const poisonButton = document.getElementById("poison");
 const energyButton = document.getElementById("energy");
+const colorButton  = document.getElementById("color");
 const keyBtn       = [navToggle, poisonButton, energyButton];
 // target areas or menus
 const mainNav      = document.getElementsByClassName("menu");
 const poisonTally  = document.getElementsByClassName("poisontally");
 const energyTally  = document.getElementsByClassName("energytally");
-const keyArea      = [mainNav, poisonTally, energyTally];
+const colorMenu    = document.getElementsByClassName("colormenu");
+const keyArea      = [mainNav, poisonTally, energyTally, colorMenu];
 
 let menuFunction = {
   forceInvisible: el => { // Make target element invisble
@@ -113,12 +144,12 @@ const forceInv = (() => {
 navToggle.onclick    = () => { menuFunction.toggleVisible(mainNav); };
 poisonButton.onclick = () => { menuFunction.toggleVisible(poisonTally); };
 energyButton.onclick = () => { menuFunction.toggleVisible(energyTally); };
+colorButton.onclick  = () => { menuFunction.toggleVisible(colorMenu); };
 /* END MENU TOGGLE */
 
- /* Reset button */
-//////////////////
-
+/* RESET BUTTON */
 const reset = document.getElementById("reset");
+
 // Resets scores and counters back to default
 reset.onclick = e => {
   e.preventDefault();
@@ -136,9 +167,3 @@ reset.onclick = e => {
   p2.energy.scoreElement.textContent = p2.energy.score;
 };
 /* END RESET BUTTON */
-
-const colour = document.getElementById("colour");
-
-colour.onclick = () => {
-  
-};

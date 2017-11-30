@@ -102,7 +102,7 @@ html {
   width: 100%;
   height: 100%; }
 
-body {
+body, main {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -125,7 +125,7 @@ button {
 //////////////*/
 #button {
   width: 25px;
-  z-index: 1;
+  z-index: 2;
   padding: 2px 15px;
   border: 1px solid black;
   cursor: pointer;
@@ -229,5 +229,23 @@ li {
     color: #8000ff; }
   100% {
     color: #ff0080; } }
+.colormenu {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  border: 1px solid #ddd;
+  background: #eee;
+  border-radius: 5px;
+  padding: 0 0 0.45em 0.8em;
+  z-index: 1; }
+  .colormenu p {
+    line-height: 1.5;
+    padding: 10px 20px;
+    padding-left: 82px;
+    background-position: 25px center;
+    background-repeat: no-repeat;
+    color: #333; }
 
 /*# sourceMappingURL=style.css.map */

@@ -25,7 +25,7 @@
 .mainGrid {
   display: grid;
   grid-template-rows: auto 20% auto 20% auto 20% auto;
-  grid-template-columns: auto 50% auto;
+  grid-template-columns: auto 60% auto;
   align-items: center;
   align-content: center; }
   .mainGrid .mGitem-2 {
@@ -96,7 +96,8 @@
 /* Global styling*/
 * {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 100%; }
 
 html {
   width: 100%;
@@ -113,6 +114,9 @@ body, main {
 button, p {
   display: inline;
   text-align: center; }
+
+#p1Score, #p2Score {
+  font-size: 2em; }
 
 /* + - button styling */
 button {
@@ -234,11 +238,11 @@ li {
   top: 33%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 130px;
+  width: 150px;
   border: 1px solid #ddd;
   background: #eee;
   border-radius: 5px;
-  padding: 0 0 0.45em 0.8em;
+  padding: 0.3em 0 0.3em 0.9em;
   z-index: 1; }
   .colormenu p {
     line-height: 1.5;

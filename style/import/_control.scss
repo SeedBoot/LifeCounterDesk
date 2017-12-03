@@ -13,8 +13,7 @@
   opacity: 0;
 }
 
-.visible {
-  opacity: 100%;
-  transition: ease-in all 0.4s;
+.hidden {
+  display: none;
 }
 /***/

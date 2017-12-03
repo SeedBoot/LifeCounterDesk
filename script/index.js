@@ -113,7 +113,7 @@ const mainNav      = document.getElementsByClassName("menu");
 const poisonTally  = document.getElementsByClassName("poisontally");
 const energyTally  = document.getElementsByClassName("energytally");
 const colorMenu    = document.getElementsByClassName("colormenu");
-const keyArea      = [mainNav, poisonTally, energyTally, colorMenu];
+const keyArea      = [mainNav, poisonTally, energyTally];
 
 let menuFunction = {
   forceInvisible: el => { // Make target element invisble
@@ -129,7 +129,9 @@ let menuFunction = {
     for (var i = 0; i < el.length; i++) {
       el[i].classList.toggle("invisible");
     }
-  }
+  },
+  forceDisplayNone: el => el[i].classList.add("hidden"),
+  toggleDisplayNone: el => el.classList.toggle("hidden"),
 };
 
 const forceInv = (() => {
@@ -139,12 +141,14 @@ const forceInv = (() => {
     i++;
   }
 })();
+const forceDispNone = (() => menuFunction.forceDisplayNone(colorMenu))();
 
 // Add a click event to run the toggleVisible function
 navToggle.onclick    = () => { menuFunction.toggleVisible(mainNav); };
 poisonButton.onclick = () => { menuFunction.toggleVisible(poisonTally); };
 energyButton.onclick = () => { menuFunction.toggleVisible(energyTally); };
-colorButton.onclick  = () => { menuFunction.toggleVisible(colorMenu); };
+
+colorButton.onclick  = () => { menuFunction.toggleDisplayNone(colorMenu); };
 /* END MENU TOGGLE */
 
 /* RESET BUTTON */

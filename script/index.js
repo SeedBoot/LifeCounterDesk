@@ -130,7 +130,7 @@ let menuFunction = {
       el[i].classList.toggle("invisible");
     }
   },
-  forceDisplayNone: el => el[i].classList.add("hidden"),
+  forceDisplayNone: el => el.classList.add("hidden"),
   toggleDisplayNone: el => el.classList.toggle("hidden"),
 };
 

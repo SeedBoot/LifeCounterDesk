@@ -13,8 +13,9 @@ On with the To-do list!
 - [x] Make the "poison" and "energy" counters
 - [x] Make the reset button work
 - [x] Give the "poison" and "energy" counters a Hide/show toggle
-- [ ] Make a colour toggle for players
-- [ ] Create form to customise life total *And hide/show toggle*
+- [x] Make a colour toggle for players
+- [ ] (Make some decent colours!)
+- [x] Create form to customise life total *And hide/show toggle*
 - [ ] Swap grid out? *This may not be the best use for Grid*
 - [ ] Customise buttons
 - [ ] Change the font?

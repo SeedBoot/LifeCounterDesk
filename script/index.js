@@ -99,21 +99,25 @@ function Player(player) {
 
 let p1 = new Player(1);
 let p2 = new Player(2);
-/* END PLAYER CREATION */
 
- /* TOGGLE MENU */
+/* TOGGLE MENU */
 // Buttons
 const navToggle    = document.getElementById("button");
 const poisonButton = document.getElementById("poison");
 const energyButton = document.getElementById("energy");
-const colorButton  = document.getElementById("color");
 const keyBtn       = [navToggle, poisonButton, energyButton];
+// more buttons
+const colorButton  = document.getElementById("color");
+const lifeButton   = document.getElementById("life");
 // target areas or menus
 const mainNav      = document.getElementsByClassName("menu");
 const poisonTally  = document.getElementsByClassName("poisontally");
 const energyTally  = document.getElementsByClassName("energytally");
-const colorMenu    = document.getElementsByClassName("colormenu");
 const keyArea      = [mainNav, poisonTally, energyTally];
+// more target areas
+const colorMenu    = document.getElementsByClassName("colormenu")[0];
+const lifeMenu     = document.getElementsByClassName("lifemenu")[0];
+const keyAreaHide  = [colorMenu, lifeMenu];
 
 let menuFunction = {
   forceInvisible: el => { // Make target element invisble
@@ -131,7 +135,7 @@ let menuFunction = {
     }
   },
   forceDisplayNone: el => el.classList.add("hidden"),
-  toggleDisplayNone: el => el.classList.toggle("hidden"),
+  toggleDisplayNone: el => el.classList.toggle("hidden")
 };
 
 const forceInv = (() => {
@@ -141,7 +145,14 @@ const forceInv = (() => {
     i++;
   }
 })();
-const forceDispNone = (() => menuFunction.forceDisplayNone(colorMenu))();
+
+const forceDispNone = (() => {
+  let i = 0;
+  while (i < keyAreaHide.length) {
+    menuFunction.forceDisplayNone(keyAreaHide[i]);
+    i++;
+  }
+})();
 
 // Add a click event to run the toggleVisible function
 navToggle.onclick    = () => { menuFunction.toggleVisible(mainNav); };
@@ -149,7 +160,18 @@ poisonButton.onclick = () => { menuFunction.toggleVisible(poisonTally); };
 energyButton.onclick = () => { menuFunction.toggleVisible(energyTally); };
 
 colorButton.onclick  = () => { menuFunction.toggleDisplayNone(colorMenu); };
+lifeButton.onclick   = () => { menuFunction.toggleDisplayNone(lifeMenu); };
 /* END MENU TOGGLE */
+
+/* LIFE CHANGER */
+const lifeChanger = document.getElementById("lifechanger");
+
+lifeChanger.onchange = () => {
+  p1.score = lifeChanger.value;
+  p2.score = lifeChanger.value;
+  p1.scoreElement.textContent = p1.score;
+  p2.scoreElement.textContent = p2.score;
+}
 
 /* RESET BUTTON */
 const reset = document.getElementById("reset");
@@ -157,6 +179,7 @@ const reset = document.getElementById("reset");
 // Resets scores and counters back to default
 reset.onclick = e => {
   e.preventDefault();
+  lifeChanger.value = 20;
   p1.score = 20;
   p1.poison.score = 0;
   p1.energy.score = 0;
@@ -170,4 +193,3 @@ reset.onclick = e => {
   p2.poison.scoreElement.textContent = p2.poison.score;
   p2.energy.scoreElement.textContent = p2.energy.score;
 };
-/* END RESET BUTTON */

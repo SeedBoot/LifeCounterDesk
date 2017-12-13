@@ -251,4 +251,19 @@ li {
     background-repeat: no-repeat;
     color: #333; }
 
+.lifemenu {
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  border: 1px solid #ddd;
+  background: #eee;
+  border-radius: 5px;
+  padding: 0.3em;
+  z-index: 1; }
+  .lifemenu #lifechanger {
+    width: 2.5em;
+    text-align: center; }
+
 /*# sourceMappingURL=style.css.map */

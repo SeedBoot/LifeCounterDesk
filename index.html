@@ -4,13 +4,15 @@
     <!--META-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="author" content="name">
+    <meta name="Oliver Booty" content="name">
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
     <!--TITLE-->
-    <title>SeedBoot Tutorials</title>
+    <title>MTG Life Counter</title>
     <!--CSS-->
     <link rel="stylesheet" href="style/export/style.css" type="text/css">
+    <!--Font (awesome!)-->  
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Germania+One" rel="stylesheet">
     <!--[if IE]>
@@ -46,9 +48,9 @@
     <div class="mGitem-4 menuGrid">
       <!-- Menu 1 -->
       <ul class="menu menu-item-1">
-        <li id="reset">&#8635;</li>
-        <li id="poison" class="line-through boldness">O</li>
-        <li id="energy" class="boldness">&#9889;</li>
+        <li id="reset"><span class="fa fa-repeat"></span> Reset</li>
+        <li id="poison"><span class="fa fa-exclamation-triangle"></span> Counter</li>
+        <li id="energy"><span class="fa fa-bolt"></span> Counter</li>
       </ul>
       <!-- Menu button -->
       <div class="menu-item-2" id="button">
@@ -58,8 +60,9 @@
       </div>
       <!-- Menu 2 -->
       <ul class="menu menu-item-3">
-        <li id="color" class="rainbow">Colour</li>
-        <li id="life">Life</li>
+        <li id="color" class="rainbow"><span class="fa fa-tint"></span> Colour</li>
+        <li id="life"><span class="fa fa-heart"></span> Life</li>
+        <li id="about"><span class="fa fa-question"></span> About</li>
       </ul>
     </div>
 

@@ -24,7 +24,7 @@
 .mainGrid {
   display: grid;
   grid-template-rows: auto 20% auto 20% auto 20% auto;
-  grid-template-columns: auto 60% auto;
+  grid-template-columns: auto 70% auto;
   align-items: center;
   align-content: center; }
   .mainGrid .mGitem-2 {
@@ -72,7 +72,7 @@
   align-items: center;
   justify-items: center;
   grid-template-rows: auto 33% auto;
-  grid-template-columns: auto 35% 20% 35% auto; }
+  grid-template-columns: auto 30% 30% 30% auto; }
   .menuGrid .menu-item-1 {
     grid-column: 2; }
   .menuGrid .menu-item-2 {
@@ -154,15 +154,20 @@ button {
 //////////////////*/
 li {
   list-style-type: none;
-  display: inline-block;
   border: 1px solid black;
   cursor: pointer; }
 
 .menu li {
   padding: 0.2em;
-  margin: 0.2em;
+  margin: 0.2em 0.2em 0.2em 0;
   min-width: 1em;
   text-align: center; }
+
+#reset {
+  transition: ease-out all 0.3s; }
+  #reset:hover {
+    background: black;
+    color: white; }
 
 #poison {
   transition: ease-out all 0.3s; }
@@ -184,7 +189,8 @@ li {
 
 .rainbow:hover, .rainbow:active {
   -webkit-animation: rainbow 3s infinite;
-  animation: rainbow 3s infinite; }
+  animation: rainbow 3s infinite;
+  background: black; }
 
 @keyframes rainbow {
   0% {
@@ -232,6 +238,19 @@ li {
     color: #8000ff; }
   100% {
     color: #ff0080; } }
+#color {
+  margin-left: 0; }
+
+#life {
+  margin-left: 0;
+  transition: ease-out all 0.3s; }
+  #life:hover {
+    background: black;
+    color: red; }
+
+#about {
+  margin-left: 0; }
+
 .colormenu {
   position: absolute;
   top: 33%;

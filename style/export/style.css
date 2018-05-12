@@ -29,8 +29,7 @@
   align-content: center; }
   .mainGrid .mGitem-2 {
     grid-column: 2;
-    grid-row: 2;
-    background: aqua; }
+    grid-row: 2; }
   .mainGrid .mGitem-3 {
     grid-column: 2;
     grid-row: 3; }
@@ -42,15 +41,16 @@
     grid-row: 5; }
   .mainGrid .mGitem-6 {
     grid-column: 2;
-    grid-row: 6;
-    background: red; }
+    grid-row: 6; }
 
 .playerGrid {
+  border-radius: 5px;
   display: grid;
   grid-template-rows: auto 33% auto;
   grid-template-columns: 20% 20% 20% 20% 20%;
   justify-items: center;
-  align-items: center; }
+  align-items: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.9), white, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.5)); }
   .playerGrid .item-1 {
     grid-row: 2;
     grid-column: 1; }
@@ -92,7 +92,7 @@
   .counter-grid .counter-item-4 {
     grid-column: 4; }
 
-/* Global styling*/
+/*/ GLOBAL STYLE /*/
 * {
   margin: 0;
   padding: 0;
@@ -103,8 +103,6 @@ html {
   height: 100%; }
 
 body, main {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100%;
   font-family: 'Germania One', cursive; }
@@ -113,6 +111,23 @@ body, main {
 button, p {
   display: inline;
   text-align: center; }
+
+#player1bg,
+#player2bg {
+  width: 100%;
+  height: 50vh;
+  position: absolute;
+  z-index: -1; }
+
+#player1bg {
+  top: 0;
+  left: 0;
+  background: #22559c; }
+
+#player2bg {
+  top: 50%;
+  left: 0;
+  background: #79bd8f; }
 
 #p1Score, #p2Score {
   font-size: 2em; }
@@ -123,15 +138,15 @@ button {
   width: 3em;
   border-radius: 50%; }
 
-/*////////////////
-// MENU BUTTON //
-//////////////*/
+/*/ MENU BUTTON /*/
 #button {
   width: 25px;
-  z-index: 2;
   padding: 2px 15px;
   border: 1px solid black;
+  border-radius: 2px;
+  background: white;
   cursor: pointer;
+  z-index: 2;
   transition: all 0.5s; }
   #button .line {
     margin: 0.25em 0;
@@ -149,13 +164,12 @@ button {
   #button:active {
     border-radius: 50%; }
 
-/*////////////////////
-// END MENU BUTTON //
-//////////////////*/
+/*/ END MENU BUTTON /*/
 li {
   list-style-type: none;
   display: inline-block;
   border: 1px solid black;
+  background: white;
   cursor: pointer; }
 
 .menu li {
@@ -243,13 +257,10 @@ li {
   border-radius: 5px;
   padding: 0.3em 0 0.3em 0.9em;
   z-index: 1; }
-  .colormenu p {
-    line-height: 1.5;
-    padding: 10px 20px;
-    padding-left: 82px;
-    background-position: 25px center;
-    background-repeat: no-repeat;
-    color: #333; }
+
+#p1theme,
+#p2theme {
+  min-width: 70px; }
 
 .lifemenu {
   position: absolute;
@@ -264,6 +275,9 @@ li {
   z-index: 1; }
   .lifemenu #lifechanger {
     width: 2.5em;
-    text-align: center; }
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); }
 
 /*# sourceMappingURL=style.css.map */

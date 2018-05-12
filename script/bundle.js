@@ -70,8 +70,12 @@
 "use strict";
 
 
-/* PLAYER CREATION FUNCTION */
-function Player(player) {
+var colorConfig = {
+  blue: '#22559c',
+  green: '#79bd8f'
+
+  /* PLAYER CREATION FUNCTION */
+};function Player(player) {
   var _this = this;
 
   var play = "p" + player;
@@ -142,7 +146,7 @@ function Player(player) {
 
   this.color = {
     element: document.getElementById(play + "theme"),
-    target: document.getElementById("player" + num),
+    target: document.getElementById("player" + num + "bg"),
     update: function update(bgColor, textColor) {
       _this.color.target.style.background = bgColor;
       _this.color.target.style.color = textColor;
@@ -157,7 +161,7 @@ function Player(player) {
         updoot('white', 'black');
         break;
       case 'blue':
-        updoot('blue', 'white');
+        updoot(colorConfig.blue, 'white');
         break;
       case 'black':
         updoot('black', 'white');
@@ -166,7 +170,7 @@ function Player(player) {
         updoot('red', 'black');
         break;
       case 'green':
-        updoot('green', 'black');
+        updoot(colorConfig.green, 'black');
         break;
       case 'purple':
         updoot('purple', 'white');
@@ -263,8 +267,8 @@ lifeButton.onclick = function () {
 var lifeChanger = document.getElementById("lifechanger");
 
 lifeChanger.onchange = function () {
-  p1.score = lifeChanger.value;
-  p2.score = lifeChanger.value;
+  p1.score = parseInt(lifeChanger.value);
+  p2.score = parseInt(lifeChanger.value);
   p1.scoreElement.textContent = p1.score;
   p2.scoreElement.textContent = p2.score;
 };

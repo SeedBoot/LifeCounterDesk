@@ -13,7 +13,7 @@
   .mGitem-2 {
     grid-column: 2;
     grid-row: 2;
-    background: aqua;
+    // background: aqua;
   }
 
   .mGitem-3 {
@@ -34,17 +34,27 @@
   .mGitem-6 {
     grid-column: 2;
     grid-row: 6;
-    background: red;
+    // background: red;
   }
 }
 
 // grid-ception, child grids for players
 .playerGrid {
+  border-radius: 5px;
   display: grid;
   grid-template-rows: auto 33% auto;
   grid-template-columns: 20% 20% 20% 20% 20%;
   justify-items: center;
   align-items: center;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.68),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.68),
+    rgba(255, 255, 255, 0.5)
+  );
 
   .item-1 {
     grid-row: 2;

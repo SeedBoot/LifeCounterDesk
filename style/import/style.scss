@@ -2,17 +2,44 @@
 @import "_control.scss";
 @import "_grid.scss";
 
-/* Global styling*/
+/*/ GLOBAL STYLE /*/
 * { margin: 0; padding: 0; font-size: 100%;}
 
 html { width: 100%; height: 100%; }
-body, main { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Germania One', cursive; }
+
+body, main {
+  width: 100%;
+  height: 100%;
+  font-family: 'Germania One', cursive;
+}
 
 /* selectors for + - buttons and score <p> tags */
 button, p {
   display: inline;
   text-align: center;
   //font-size: 1rem;
+}
+
+#player1bg,
+#player2bg {
+  width: 100%;
+  height: 50vh;
+  position: absolute;
+  z-index: -1;
+}
+
+#player1bg {
+  top: 0;
+  left: 0;
+  // background: red;
+  background: #22559c;
+}
+
+#player2bg {
+  top: 50%;
+  left: 0;
+  // background: green;
+  background: #79bd8f;
 }
 
 #p1Score, #p2Score {
@@ -26,15 +53,15 @@ button {
   border-radius: 50%;
 }
 
-/*////////////////
-// MENU BUTTON //
-//////////////*/
+/*/ MENU BUTTON /*/
 #button {
   width: 25px;
-  z-index: 2;
   padding: 2px 15px;
   border: 1px solid black;
+  border-radius: 2px;
+  background: white;
   cursor: pointer;
+  z-index: 2;
   transition: all 0.5s;
 
   .line {
@@ -62,17 +89,17 @@ button {
   }
 }
 
-/*////////////////////
-// END MENU BUTTON //
-//////////////////*/
+/*/ END MENU BUTTON /*/
 
 //globabl li selector
 li {
   list-style-type: none;
   display: inline-block;
   border: 1px solid black;
+  background: white;
   cursor: pointer;
 }
+
 // list for options
 .menu {
 
@@ -156,15 +183,19 @@ li {
   padding: 0.3em 0 0.3em 0.9em;
   z-index: 1;
 
+  // p {
+  //   line-height: 1.5;
+  //   padding: 10px 20px;
+  //   padding-left: 82px;
+  //   background-position: 25px center;
+  //   background-repeat: no-repeat;
+  //   color: #333;
+  // }
+}
 
-  p {
-    line-height: 1.5;
-    padding: 10px 20px;
-    padding-left: 82px;
-    background-position: 25px center;
-    background-repeat: no-repeat;
-    color: #333;
-  }
+#p1theme,
+#p2theme {
+  min-width: 70px;
 }
 
 .lifemenu {
@@ -182,5 +213,8 @@ li {
   #lifechanger {
     width: 2.5em;
     text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
